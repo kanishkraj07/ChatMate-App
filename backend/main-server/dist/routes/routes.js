@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const auth_1 = __importDefault(require("./auth"));
+const chats_1 = __importDefault(require("./chats"));
+const groups_1 = __importDefault(require("./groups"));
+const friendRequest_1 = __importDefault(require("./friendRequest"));
+const user_1 = __importDefault(require("./user"));
+const notification_1 = __importDefault(require("./notification"));
+const appRouter = express_1.default.Router();
+appRouter.use('/auth', auth_1.default);
+appRouter.use('/user', user_1.default);
+appRouter.use('/friendRequest', friendRequest_1.default);
+appRouter.use('/chat', chats_1.default);
+appRouter.use('/group', groups_1.default);
+appRouter.use('/notification', notification_1.default);
+exports.default = appRouter;

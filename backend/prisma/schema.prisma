@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id
+  userName String ? @unique
+  email String @unique
+  password String 
+  firstName String ? 
+  lastName String ?
+  provider String ?
+  providerId String ?
+  createdAt DateTime
+  profileImgUrl String @default("")
+  friends FriendsOnUser[]
+  allGroups UserGroup[]
+  ownerGroups Group[]
+  friendRequest FriendRequest[]
+  notifcation GlobalNotification[]
+}
+
+model Friend {
+  id String @id
+  friendId String
+  becameFriendAt DateTime
+  status String
+  users FriendsOnUser[]
+}
+
+model Relationship {
+  id String @id
+  status String
+  friends FriendsOnUser[]
+  chats Chat[]
+}
+
+model FriendsOnUser {
+  id String @id
+  userId String
+  friendId String
+  relationshipId String
+  notificationCount Int @default(0)
+  user User @relation(fields: [userId], references: [id])
+  friend Friend @relation(fields: [friendId], references: [id])
+  relationship Relationship @relation(fields: [relationshipId], references: [id])
+}
+
+model Chat {
+  id String @id
+  senderId String
+  relationshipId String
+  message String
+  sentTime DateTime
+  isSeen Boolean @default(false)
+  relationship Relationship @relation(fields: [relationshipId], references: [id])
+}
+
+model UserGroup {
+  id String @id
+  userId String
+  groupId String
+  joinedDate DateTime
+  isOwner Boolean
+  status String
+  notificationCount Int @default(0)
+  user User @relation(fields: [userId], references: [id])
+  group Group @relation(fields: [groupId], references: [id])
+  chats GroupChat[]
+}
+
+model Group {
+  id String @id
+  name String
+  ownerId String
+  createdAt DateTime
+  iconUrl String @default("")
+  memberCount Int
+  members UserGroup[]
+  user User @relation(fields: [ownerId], references: [id])
+}
+
+model GroupChat {
+  id String @id
+  userGroupId String
+  message String
+  sentTime DateTime
+  userGroup UserGroup @relation(fields: [userGroupId], references: [id])
+} 
+
+model FriendRequest {
+  id String @id
+  userId String
+  toUserId String
+  status String
+  sentTime DateTime
+  user User @relation(fields: [userId], references: [id])
+}
+
+model GlobalNotification {
+  id String @id
+  userId String @unique
+  totalCount Int @default(0)
+  isSeen Boolean @default(false)
+  notifications NotificationDetails[]
+  user User @relation(fields: [userId], references: [id])
+}
+
+model NotificationDetails {
+  id String @id
+  userNotificationId String
+  sentTime DateTime
+  type String
+  subType String
+  message String
+  globalNotification GlobalNotification @relation(fields: [userNotificationId], references: [id])
+}

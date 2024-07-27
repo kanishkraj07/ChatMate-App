@@ -1,0 +1,21 @@
+.nav-item {
+     width: 100%;
+     cursor: pointer;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 5px;
+     color: #969faf;
+     padding: 5px 15px;
+     padding-left: 0;
+     padding-right: 0;
+}
+
+.active {
+     color: white;
+     border-bottom: 3px solid #06d6a0;
+}
+
+.nav-item:hover {
+     color: white;
+}

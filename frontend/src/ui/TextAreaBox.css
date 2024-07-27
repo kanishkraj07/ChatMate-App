@@ -1,0 +1,5 @@
+.textarea-placeholder::placeholder {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
