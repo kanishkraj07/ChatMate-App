@@ -1,3 +1,13 @@
-## OVERVIEW
+## Overview
 
-A real-time chat application offering secure login via Google and GitHub, instant messaging, and real-time notifications. Features include global search, easy group management, and a friend-making system. Designed to handle up to 10,000 users with a scalable microservices architecture supporting up to 1 million users, it uses Redis for fast data handling and AWS S3 for object storage.
+A real-time chat application in which user can able to make new friends, create or join groups and start their new journey. 
+
+### Tech stack:  React.js, Recoil, Typescript, Tailwind CSS, Express.js, Node.js, Redis, Websockets, OAuth 2.0, PostgreSQL, Prisma (ORM), AWS S3
+
+## Features
+1. User Authentication - Google and GitHub using OAuth 2.0  
+2. Real time messaging system and notifications using Websockets  
+3. Global search to make new friends using their email or usernames.  
+4. Users can able to create and join other groups.  
+5. Achieved less than 1 ms latency for all api calls using Redis cache memory server  
+6. Currently supports 10,000 users but can be scalable to 1 million users very easily.
