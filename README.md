@@ -11,4 +11,4 @@ A real-time chat application in which user can able to make new friends, create 
 3. Global search to make new friends using their email or usernames.  
 4. Users can able to create and join other groups.  
 5. Achieved less than 1 ms latency for all api calls using Redis cache memory server  
-6. Currently supports 10,000 users but can be scalable to 1 million users very easily.
+6. Integrated with Redis Messaging queues and Message brokers (Pub/Subs) which can be scalable to 1 million users.
