@@ -2,7 +2,8 @@
 
 A real-time chat application in which user can able to make new friends, create or join groups and start their new journey. 
 
-### Tech stack:  React.js, Recoil, Typescript, Tailwind CSS, Express.js, Node.js, Redis, Websockets, OAuth 2.0, PostgreSQL, Prisma (ORM), AWS S3
+ ## Tech stack
+  React.js, Recoil, Typescript, Tailwind CSS, Express.js, Node.js, Redis, Websockets, OAuth 2.0, PostgreSQL, Prisma (ORM), AWS S3
 
 ## Features
 1. User Authentication - Google and GitHub using OAuth 2.0  
